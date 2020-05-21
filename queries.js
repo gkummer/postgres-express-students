@@ -51,24 +51,19 @@ const getGrades = (request, response) => {
 
 const postGrades = (request, response) => {
     const review = request.body
-
-    console.log(review)
     
     if(review.studentid && review.grade){
-        const id = parseInt(request.body.studentid)
-        const grade = parseInt(request.body.grade)
-
-        console.log(id)
-        console.log(grade)
+        const id = request.body.studentid
+        const grade = [parseInt(request.body.grade)]
         
         pool.query(
             'UPDATE students SET grades = grades || $1 WHERE studentid = $2',
-            [grade], [id],
+            [grade, id],
             (error, review) => {
             if (error) {
                 throw error
             }
-            response.status(200).send(`Student modified with ID: ${review.studentId}`)
+            response.status(200).send(`Student modified with ID: ${id}`)
             }
         )
     }else{
@@ -80,18 +75,18 @@ const postGrades = (request, response) => {
 const postStudent = (request, response) => {
     const review = request.body
 
-    console.log(review)
+    const username = review.username
     
     if(review.email && review.username){
 
         pool.query(
             'INSERT INTO students (email, username) VALUES ($1, $2)',
-            [review.email], [review.username],
+            [review.email, review.username],
             (error, review) => {
             if (error) {
                 throw error
             }
-            response.status(200).send(`Student Added with username: ${review.username}`)
+            response.status(200).send(`Student Added with username: ${username}`)
             }
         )
     }else{
