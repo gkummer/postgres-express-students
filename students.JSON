@@ -1,0 +1,5 @@
+[
+    {"studentId": 1, "name": "James Bond", "username": "Jbond", "email": "james.bond@us.af.mil", "grades": [79, 85, 91] },
+    {"studentId": 2, "name": "Peter Parker", "username": "Pparker", "email": "peter.parker@us.af.mil", "grades": [65, 72, 62] },
+    {"studentId": 3, "name": "Frodo Baggins", "username": "Fbaggins", "email": "frodo.baggins@us.af.mil", "grades": [91, 94, 98] }
+]
